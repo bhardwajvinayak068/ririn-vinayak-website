@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
+}
+
+body {
+  background-color: #fffdf9;
+  color: #3a2c30;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background-color: #e8c5ce;
+  color: #3a2c30;
+}
+
+/* scrollbar hidden, scrolling still fully functional */
+::-webkit-scrollbar {
+  display: none;
+}
+
+.text-shadow-soft {
+  text-shadow: 0 2px 24px rgba(58, 44, 48, 0.25);
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
+/*
+  Scroll-driven reveals — content is opacity:1 by default (this rule),
+  and only hidden pre-entrance inside the @supports block below, so a
+  browser without view-timeline support, a stalled tab, or a headless
+  renderer always shows the content. Motion is a pure-CSS enhancement
+  tied to actual scroll position, not JS/rAF — it can't get "stuck".
+*/
+.reveal,
+.reveal-scale,
+.reveal-clip {
+  opacity: 1;
+}
+
+@supports (animation-timeline: view()) {
+  .reveal {
+    opacity: 0;
+    animation: reveal-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
+  }
+  .reveal-scale {
+    opacity: 0;
+    animation: reveal-scale-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 32%;
+  }
+  .reveal-clip {
+    opacity: 0;
+    animation: reveal-clip-wipe linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+
+  /* stagger grid children by nudging each entry range slightly later */
+  .reveal-scale:nth-child(2) { animation-range: entry 4% cover 36%; }
+  .reveal-scale:nth-child(3) { animation-range: entry 8% cover 40%; }
+  .reveal-scale:nth-child(4) { animation-range: entry 12% cover 44%; }
+  .reveal-scale:nth-child(5) { animation-range: entry 16% cover 48%; }
+  .reveal-scale:nth-child(6) { animation-range: entry 20% cover 52%; }
+}
+
+@keyframes reveal-rise {
+  from { opacity: 0; transform: translateY(32px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes reveal-scale-in {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes reveal-clip-wipe {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0% 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-scale, .reveal-clip {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
