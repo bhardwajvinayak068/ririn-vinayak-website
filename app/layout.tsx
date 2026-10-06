@@ -36,10 +36,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ririn-vinayak-wedding.vercel.app"),
+  metadataBase: new URL("https://virin-wedding-indo-version-1-0.vercel.app"),
   title: "Shubh Vivah | Vinayak & Ririn — 16th January 2027",
   description:
-    "Royal Wedding Invitation of Vinayak & Ririn. Solemnized by sacred Vedic traditions at Mahi Resort, Patti, Punjab. ॥ श्री गणेशाय नमः ॥",
+    "Royal Wedding Invitation of Vinayak & Ririn. Solemnized by sacred Vedic traditions at Mahi Resort, Patti, Punjab. ॥ श्री गणेशाय नमः ॥ Click to open our wedding patrika.",
   keywords: [
     "Vinayak & Ririn Wedding",
     "Shubh Vivah",
@@ -52,17 +52,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shubh Vivah | Vinayak & Ririn — 16th January 2027",
     description:
-      "Together with their families, joyfully request the honour of your royal presence at Mahi Resort, Patti, Punjab. ॥ श्री गणेशाय नमः ॥",
-    url: "https://ririn-vinayak-wedding.vercel.app",
+      "Together with their families, joyfully request the honour of your royal presence at Mahi Resort, Patti, Punjab (13th – 16th Jan 2027). ॥ श्री गणेशाय नमः ॥",
+    url: "https://virin-wedding-indo-version-1-0.vercel.app",
     siteName: "Vinayak & Ririn Royal Wedding",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/couple-hero.webp",
+        url: "/images/og-preview.jpg",
         width: 1200,
         height: 630,
-        alt: "Vinayak & Ririn Royal Wedding",
+        alt: "Vinayak & Ririn Royal Wedding Invitation",
+        type: "image/jpeg",
       },
     ],
   },
@@ -70,8 +71,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shubh Vivah | Vinayak & Ririn — 16th January 2027",
     description:
-      "Witness the royal union of Vinayak & Ririn at Mahi Resort, Patti, Punjab.",
-    images: ["/images/couple-hero.webp"],
+      "Witness the royal union of Vinayak & Ririn at Mahi Resort, Patti, Punjab (13th – 16th Jan 2027).",
+    images: ["/images/og-preview.jpg"],
   },
   robots: {
     index: true,
