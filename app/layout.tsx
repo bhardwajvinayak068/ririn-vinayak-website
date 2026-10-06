@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Jost, Rozha_One, Cinzel } from "next/font/google";
 import { MotionConfig } from "framer-motion";
-import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const display = Playfair_Display({
@@ -94,7 +93,7 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-[#FAF7F2] text-[#2C2225] antialiased selection:bg-amber-200 selection:text-amber-950">
         <MotionConfig reducedMotion="user">
-          <SmoothScroll>{children}</SmoothScroll>
+          {children}
         </MotionConfig>
       </body>
     </html>

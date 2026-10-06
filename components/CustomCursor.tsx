@@ -24,8 +24,7 @@ export default function CustomCursor() {
       return;
     }
 
-    const updateCursorAtPoint = (x: number, y: number) => {
-      const el = document.elementFromPoint(x, y);
+    const updateCursorStateFromElement = (el: HTMLElement | null) => {
       if (!el) {
         setCursorState("default");
         return;
@@ -47,13 +46,13 @@ export default function CustomCursor() {
       if (!hasMoved) setHasMoved(true);
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      updateCursorAtPoint(e.clientX, e.clientY);
+      updateCursorStateFromElement(e.target as HTMLElement | null);
     };
 
-    const handleClick = () => {
+    const handleClick = (e: MouseEvent) => {
       setCursorState("default");
       setTimeout(() => {
-        updateCursorAtPoint(mouseX.get(), mouseY.get());
+        updateCursorStateFromElement(e.target as HTMLElement | null);
       }, 80);
     };
 

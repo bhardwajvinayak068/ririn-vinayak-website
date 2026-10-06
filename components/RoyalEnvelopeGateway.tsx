@@ -197,9 +197,7 @@ export default function RoyalEnvelopeGateway({
         } else {
           ctx.beginPath();
           ctx.arc(0, 0, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
-          ctx.shadowColor = "rgba(212, 175, 55, 0.7)";
-          ctx.shadowBlur = 5;
+          ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity * 0.9})`;
           ctx.fill();
         }
         ctx.restore();
@@ -229,8 +227,6 @@ export default function RoyalEnvelopeGateway({
           ctx.closePath();
           ctx.fillStyle = bp.color;
           ctx.globalAlpha = bp.opacity;
-          ctx.shadowColor = "rgba(212, 175, 55, 0.9)";
-          ctx.shadowBlur = 4;
           ctx.fill();
         } else {
           ctx.beginPath();

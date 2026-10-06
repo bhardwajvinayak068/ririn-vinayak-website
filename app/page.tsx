@@ -141,11 +141,15 @@ export default function MasterWeddingWebsite() {
   const lenisRef = useRef<Lenis | null>(null);
 
   // ==========================================
-  // LENIS INERTIAL LUXURY SMOOTH SCROLL
+  // LENIS INERTIAL LUXURY SMOOTH SCROLL (DESKTOP)
   // ==========================================
   useEffect(() => {
+    // On touch mobile screens, native 120Hz iOS/Android inertia is vastly smoother
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouch) return;
+
     const lenis = new Lenis({
-      duration: 1.3,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
@@ -160,6 +164,7 @@ export default function MasterWeddingWebsite() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
@@ -251,9 +256,7 @@ export default function MasterWeddingWebsite() {
         } else {
           ctx.beginPath();
           ctx.arc(0, 0, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
-          ctx.shadowColor = "rgba(212, 175, 55, 0.8)";
-          ctx.shadowBlur = 6;
+          ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity * 0.9})`;
           ctx.fill();
         }
         ctx.restore();
