@@ -506,7 +506,7 @@ export default function MasterWeddingWebsite() {
     }
 
     if (bgAudioRef.current) {
-      bgAudioRef.current.volume = 0.55;
+      bgAudioRef.current.volume = 0.32;
       bgAudioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     }
 
@@ -523,6 +523,7 @@ export default function MasterWeddingWebsite() {
     setIsUnsealed(true);
     setIsOpened(true);
     if (bgAudioRef.current) {
+      bgAudioRef.current.volume = 0.32;
       bgAudioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     }
   };
@@ -540,6 +541,7 @@ export default function MasterWeddingWebsite() {
       bgAudioRef.current.pause();
       setIsPlaying(false);
     } else {
+      bgAudioRef.current.volume = 0.32;
       bgAudioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     }
   };
@@ -616,8 +618,18 @@ export default function MasterWeddingWebsite() {
       {/* Contextual Custom Cursor for Desktop */}
       <CustomCursor />
 
-      {/* Background Shehnai Audio */}
-      <audio ref={bgAudioRef} src="/audio/wedding-bgm.mp3" loop preload="none" />
+      {/* Background Shehnai Audio (Gentle Ambient 32% Volume) */}
+      <audio
+        ref={(el) => {
+          if (el) {
+            el.volume = 0.32;
+            bgAudioRef.current = el;
+          }
+        }}
+        src="/audio/wedding-bgm.mp3"
+        loop
+        preload="none"
+      />
 
       {/* Ambient Canvas: Gold Specks & Drifting Petals */}
       <canvas

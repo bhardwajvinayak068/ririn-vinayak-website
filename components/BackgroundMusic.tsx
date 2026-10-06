@@ -15,7 +15,7 @@ const BackgroundMusic = forwardRef<BackgroundMusicHandle>((_, ref) => {
     play: () => {
       const el = audioRef.current;
       if (!el) return;
-      el.volume = 0.5;
+      el.volume = 0.32;
       el.play().catch(() => {});
       setStarted(true);
     },
