@@ -43,15 +43,17 @@ export function Blossom({
     <group ref={group} position={position} scale={scale} rotation={[0.35, 0, 0]}>
       {angles.map((angle, i) => (
         <group key={i} rotation={[0, 0, angle]}>
-          <group position={[0, 0.19, 0]} rotation={[0.5, 0, 0]}>
-            <mesh scale={[0.62, 1.35, 0.3]}>
-              <sphereGeometry args={[0.17, 14, 10]} />
+          <group position={[0, 0.19, 0]} rotation={[0.45, 0, 0]}>
+            <mesh scale={[0.65, 1.4, 0.18]}>
+              <sphereGeometry args={[0.18, 16, 12]} />
               <meshStandardMaterial
                 color={petalColor}
-                roughness={0.45}
-                metalness={0.08}
+                roughness={0.3}
+                metalness={0.05}
+                transparent
+                opacity={0.88}
                 emissive={petalColor}
-                emissiveIntensity={0.12}
+                emissiveIntensity={0.15}
                 side={THREE.DoubleSide}
               />
             </mesh>
@@ -59,13 +61,13 @@ export function Blossom({
         </group>
       ))}
       <mesh>
-        <sphereGeometry args={[0.13, 16, 16]} />
+        <sphereGeometry args={[0.12, 16, 16]} />
         <meshStandardMaterial
-          color="#C98A94"
-          roughness={0.35}
-          metalness={0.2}
-          emissive="#B76E79"
-          emissiveIntensity={0.15}
+          color="#B76E79"
+          roughness={0.3}
+          metalness={0.15}
+          emissive="#D9A0A8"
+          emissiveIntensity={0.2}
         />
       </mesh>
     </group>

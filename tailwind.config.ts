@@ -5,33 +5,44 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blush: "#F8E8EE",
-        cream: "#FFFDF9",
-        rose: "#E8C5CE",
-        "rose-gold": "#B76E79",
-        "rose-gold-light": "#D9A0A8",
-        ink: "#3A2C30",
+        cream: "#FDFBF7",
+        ink: "#23181C",
+        gold: {
+          light: "#FDF3C7",
+          DEFAULT: "#D4AF37",
+          dark: "#996515",
+          foil: "#F59E0B",
+        },
+        kesar: {
+          light: "#FDE68A",
+          DEFAULT: "#F59E0B",
+          dark: "#D97706",
+        },
+        darbar: {
+          night: "#120A0D",
+          dark: "#1A1014",
+          card: "#22161B",
+        },
+        sindoor: "#781D26",
       },
       fontFamily: {
         display: ["var(--font-display)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
+        sanskrit: ["var(--font-rozha)", "serif"],
+        cinzel: ["var(--font-cinzel)", "serif"],
       },
       letterSpacing: {
-        widest2: "0.35em",
+        widest2: "0.3em",
+        widest3: "0.4em",
       },
       keyframes: {
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        shimmer: {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
+        "gold-shimmer": {
+          "0%, 100%": { opacity: "0.7", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.02)" },
         },
       },
       animation: {
-        "fade-up": "fade-up 0.9s cubic-bezier(0.22,1,0.36,1) forwards",
-        shimmer: "shimmer 3s ease-in-out infinite",
+        "gold-shimmer": "gold-shimmer 4s ease-in-out infinite",
       },
     },
   },

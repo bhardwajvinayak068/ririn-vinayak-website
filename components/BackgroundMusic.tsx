@@ -35,21 +35,23 @@ const BackgroundMusic = forwardRef<BackgroundMusicHandle>((_, ref) => {
         <button
           onClick={toggleMute}
           aria-label={muted ? "Unmute background music" : "Mute background music"}
-          className="fixed bottom-5 right-5 z-40 flex h-10 w-10 items-center justify-center rounded-full border border-rose-gold/40 bg-cream/80 text-rose-gold shadow-[0_8px_24px_-12px_rgba(183,110,121,0.5)] backdrop-blur-sm transition-transform active:scale-90"
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full border border-rose-gold/30 bg-cream/90 px-4 py-2 text-rose-gold shadow-[0_8px_30px_-8px_rgba(183,110,121,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95"
         >
-          {muted ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M11 5 6 9H2v6h4l5 4V5Z" />
-              <line x1="23" y1="9" x2="17" y2="15" />
-              <line x1="17" y1="9" x2="23" y2="15" />
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M11 5 6 9H2v6h4l5 4V5Z" />
-              <path d="M15.5 8.5a5 5 0 0 1 0 7" />
-              <path d="M18.5 6a9 9 0 0 1 0 12" />
-            </svg>
-          )}
+          <span className="font-body text-[10px] font-medium uppercase tracking-widest2 text-ink/75">
+            {muted ? "Muted" : "Music"}
+          </span>
+          <div className="flex h-3.5 w-4 items-end justify-center gap-0.5" aria-hidden="true">
+            {muted ? (
+              <span className="h-0.5 w-3 rounded-full bg-rose-gold/50" />
+            ) : (
+              <>
+                <span className="h-2 w-0.5 animate-pulse rounded-full bg-rose-gold" />
+                <span className="h-3.5 w-0.5 animate-pulse rounded-full bg-rose-gold [animation-delay:200ms]" />
+                <span className="h-1.5 w-0.5 animate-pulse rounded-full bg-rose-gold [animation-delay:400ms]" />
+                <span className="h-3 w-0.5 animate-pulse rounded-full bg-rose-gold [animation-delay:150ms]" />
+              </>
+            )}
+          </div>
         </button>
       )}
     </>

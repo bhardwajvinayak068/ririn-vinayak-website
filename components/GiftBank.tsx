@@ -24,21 +24,22 @@ function CopyField({ label, value }: { label: string; value: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {
-      // clipboard unavailable — silently ignore
+      // clipboard unavailable
     }
   }
 
   return (
-    <div className="flex items-center justify-between gap-4 border-b border-rose-gold/15 py-4 last:border-b-0">
+    <div className="flex items-center justify-between gap-4 border-b border-amber-200/60 py-4.5 last:border-b-0">
       <div>
-        <p className="font-body text-[10px] uppercase tracking-widest2 text-ink/50">
+        <p className="font-body text-[10px] uppercase tracking-widest2 text-ink/60 font-medium">
           {label}
         </p>
-        <p className="mt-1 font-display text-lg text-ink">{value}</p>
+        <p className="mt-1 font-display text-lg text-ink font-semibold">{value}</p>
       </div>
       <button
         onClick={copy}
-        className="shrink-0 rounded-full border border-rose-gold/40 px-4 py-1.5 font-body text-[10px] uppercase tracking-widest2 text-rose-gold transition-all duration-200 hover:bg-rose-gold hover:text-cream active:scale-90"
+        aria-label={`Copy ${label}`}
+        className="shrink-0 rounded-full border border-amber-400/60 bg-amber-50 px-4 py-1.5 font-body text-[10px] uppercase tracking-widest2 text-amber-800 transition-all duration-200 hover:bg-amber-600 hover:text-white active:scale-90 font-medium"
       >
         {copied ? "Copied ✓" : "Copy"}
       </button>
@@ -48,26 +49,29 @@ function CopyField({ label, value }: { label: string; value: string }) {
 
 export default function GiftBank() {
   return (
-    <section id="gift" className="relative z-10 px-6 py-28 sm:py-36">
+    <section id="gift" className="relative z-10 px-6 py-24 sm:py-32 bg-[#FAF6F0] overflow-hidden">
       <div className="mx-auto max-w-2xl">
         <Reveal variant="clip" className="text-center">
-          <p className="font-body text-xs uppercase tracking-widest2 text-rose-gold">
-            With Love
-          </p>
-          <h2 className="mt-4 font-display text-4xl italic text-ink sm:text-5xl">
-            Blessings &amp; Gifts
-          </h2>
-          <div className="my-8">
-            <Divider />
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="h-px w-8 bg-amber-600/40" />
+            <p className="font-body text-xs uppercase tracking-widest3 text-amber-800 font-medium">
+              ॥ शगुन एवं शुभेच्छा ॥
+            </p>
+            <span className="h-px w-8 bg-amber-600/40" />
           </div>
-          <p className="mx-auto max-w-md font-body text-sm text-ink/70">
-            Your presence is the greatest gift of all. For those who wish to
-            send their blessings from afar, here are our details.
+          <h2 className="font-display text-4xl sm:text-5xl italic text-ink font-normal">
+            Shagun &amp; Sacred Blessings
+          </h2>
+          <div className="my-6">
+            <Divider variant="kamal" />
+          </div>
+          <p className="mx-auto max-w-md font-body text-sm text-ink/75">
+            Your sacred presence and blessings are our greatest treasure. For cherished well-wishers joining in spirit from afar, here are our details.
           </p>
         </Reveal>
 
         <Reveal variant="scale" className="mt-12">
-          <div className="rounded-2xl border border-rose-gold/25 bg-cream/80 px-8 py-6 shadow-[0_8px_30px_-12px_rgba(183,110,121,0.25)] backdrop-blur-sm">
+          <div className="rounded-3xl border border-amber-400/40 bg-white/95 px-8 py-6 shadow-[0_8px_30px_-12px_rgba(212,175,55,0.2)] backdrop-blur-md">
             {FIELDS.map((f) => (
               <CopyField key={f.label} label={f.label} value={f.value} />
             ))}
@@ -75,8 +79,8 @@ export default function GiftBank() {
         </Reveal>
 
         <Reveal className="mt-12 text-center">
-          <p className="font-body text-xs uppercase tracking-widest2 text-rose-gold">
-            Follow Along
+          <p className="font-body text-xs uppercase tracking-widest2 text-amber-800 font-semibold">
+            Connect With The Couple
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-4">
             {SOCIALS.map((s) => (
@@ -85,9 +89,9 @@ export default function GiftBank() {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-rose-gold px-6 py-2.5 font-body text-xs uppercase tracking-widest2 text-rose-gold transition-all duration-200 hover:bg-rose-gold hover:text-cream active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full border border-amber-500/60 bg-white px-7 py-2.5 font-body text-xs uppercase tracking-widest2 text-amber-800 transition-all duration-200 hover:bg-amber-600 hover:text-white active:scale-95 font-medium shadow-sm"
               >
-                Instagram — {s.name}
+                Instagram &middot; {s.name}
               </a>
             ))}
           </div>
